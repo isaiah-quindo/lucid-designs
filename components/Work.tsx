@@ -9,7 +9,7 @@ const projects = [
   {
     title: 'Open Architects',
     type: 'Webflow Design · Development',
-    year: '2025',
+    year: '2026',
     sector: 'Education',
     href: 'https://openarchitects.com',
     preview: {
@@ -21,7 +21,7 @@ const projects = [
   {
     title: 'MacArthur Infusions',
     type: 'Web Design · Booking System',
-    year: '2025',
+    year: '2026',
     sector: 'Healthcare',
     href: 'https://macarthurinfusions.com.au',
     preview: {
@@ -33,7 +33,7 @@ const projects = [
   {
     title: 'Nomod Feature Pages',
     type: 'Web Design',
-    year: '2025',
+    year: '2026',
     sector: 'Fintech',
     href: 'https://nomod.com/en-ae/features/tap-to-pay',
     preview: {

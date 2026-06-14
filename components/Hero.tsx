@@ -60,7 +60,7 @@ export default function Hero() {
     >
       <HeroBackground />
       <div className="hero-content relative z-10 mx-auto max-w-[1400px]">
-        <div className="hero-fade flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-paper/60 mb-10 [text-shadow:0_1px_10px_rgba(0,0,0,0.4)]">
+        <div className="hero-fade flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-paper/60 mb-10 [text-shadow:0_0_2px_rgba(0,0,0,1),0_1px_4px_rgba(0,0,0,1),0_2px_30px_rgba(0,0,0,0.95)]">
           <span className="block w-8 h-px bg-paper/40" />
           Design & Development Studio · Australia
         </div>
@@ -78,13 +78,13 @@ export default function Hero() {
         </h1>
 
         <div className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
-          <p className="hero-fade md:col-span-5 text-lg md:text-xl text-paper/70 leading-relaxed max-w-xl [text-shadow:0_1px_18px_rgba(0,0,0,0.45)]">
+          <p className="hero-fade md:col-span-5 text-lg md:text-xl text-paper/70 leading-relaxed max-w-xl [text-shadow:0_0_3px_rgba(0,0,0,1),0_1px_6px_rgba(0,0,0,1),0_2px_36px_rgba(0,0,0,0.95)]">
             We are a small, hands-on studio building considered websites,
             interfaces, and brand systems for companies who care about how
             things work and how they feel.
           </p>
 
-          <div className="md:col-span-4 md:col-start-9 flex flex-col gap-3 text-sm [text-shadow:0_1px_12px_rgba(0,0,0,0.45)]">
+          <div className="md:col-span-4 md:col-start-9 flex flex-col gap-3 text-sm [text-shadow:0_0_2px_rgba(0,0,0,1),0_1px_5px_rgba(0,0,0,1),0_2px_32px_rgba(0,0,0,0.95)]">
             <div className="hero-meta flex justify-between border-b border-paper/20 pb-2">
               <span className="text-paper/50">Based</span>
               <span>Sydney, AU</span>

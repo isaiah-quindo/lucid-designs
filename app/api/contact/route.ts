@@ -45,7 +45,9 @@ export async function POST(req: Request) {
   }
 
   const from = process.env.RESEND_FROM ?? 'Lucid Designs <onboarding@resend.dev>'
-  const studioInbox = (process.env.RESEND_TO ?? 'hello@luciddesigns.com.au')
+  const studioInbox = (
+    process.env.RESEND_TO ?? 'hello@luciddesigns.com.au,isaiah.quindo@gmail.com'
+  )
     .split(',')
     .map((s) => s.trim())
     .filter(Boolean)

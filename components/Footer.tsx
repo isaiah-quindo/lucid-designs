@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="relative isolate overflow-hidden bg-ink text-paper px-6 md:px-10 pt-20 pb-10">
       <HeroBackground gridScale={80} />
-      <div className="relative z-10 mx-auto max-w-[1400px] [text-shadow:0_1px_14px_rgba(0,0,0,0.5)]">
+      <div className="relative z-10 mx-auto max-w-[1400px] [text-shadow:0_0_2px_rgba(0,0,0,1),0_1px_5px_rgba(0,0,0,1),0_2px_32px_rgba(0,0,0,0.95)]">
         <div className="grid grid-cols-2 md:grid-cols-12 gap-10 mb-20">
           <div className="col-span-2 md:col-span-5">
             <div className="flex items-center gap-2.5 mb-6">
