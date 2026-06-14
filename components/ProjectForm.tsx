@@ -67,7 +67,7 @@ export default function ProjectForm({ open, plan, onClose }: Props) {
   return (
     <div
       aria-hidden={!open}
-      className={`fixed inset-0 z-[60] flex items-end md:items-center justify-center px-4 md:px-6 py-6 transition-opacity duration-300 ${
+      className={`fixed inset-0 z-[60] flex items-end md:items-center justify-center px-4 md:px-6 py-4 md:py-6 transition-opacity duration-300 ${
         open ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}
     >
@@ -82,7 +82,7 @@ export default function ProjectForm({ open, plan, onClose }: Props) {
         role="dialog"
         aria-modal="true"
         aria-label="Start a project"
-        className={`relative w-full max-w-2xl rounded-2xl bg-white text-ink shadow-[0_30px_80px_-30px_rgba(0,0,0,0.45)] transition-all duration-300 ${
+        className={`relative w-full max-w-2xl max-h-[calc(100dvh-2rem)] md:max-h-[calc(100dvh-3rem)] overflow-hidden flex flex-col rounded-2xl bg-white text-ink shadow-[0_30px_80px_-30px_rgba(0,0,0,0.45)] transition-all duration-300 ${
           open ? 'translate-y-0 scale-100' : 'translate-y-6 scale-[0.98]'
         }`}
       >
@@ -90,7 +90,7 @@ export default function ProjectForm({ open, plan, onClose }: Props) {
           type="button"
           aria-label="Close"
           onClick={onClose}
-          className="absolute top-5 right-5 inline-flex h-9 w-9 items-center justify-center rounded-full border border-ink/15 hover:bg-ink hover:text-paper transition-colors"
+          className="absolute top-5 right-5 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full border border-ink/15 bg-white hover:bg-ink hover:text-paper transition-colors"
         >
           <svg viewBox="0 0 10 10" className="h-3 w-3" fill="none">
             <path
@@ -102,7 +102,7 @@ export default function ProjectForm({ open, plan, onClose }: Props) {
           </svg>
         </button>
 
-        <div className="px-8 md:px-12 py-10 md:py-14">
+        <div className="overflow-y-auto px-6 md:px-12 py-8 md:py-14">
           {/* Form view */}
           <div
             className={status === 'success' ? 'hidden' : 'block'}
@@ -142,6 +142,7 @@ export default function ProjectForm({ open, plan, onClose }: Props) {
                 textarea
                 required
                 hint="Timelines, goals, links to anything relevant."
+                hintClassName="hidden md:inline"
               />
 
               {error && <p className="text-sm text-red-600">{error}</p>}
@@ -263,6 +264,7 @@ type FieldProps = {
   textarea?: boolean
   required?: boolean
   hint?: string
+  hintClassName?: string
   inputRef?: React.Ref<HTMLInputElement>
 }
 
@@ -273,6 +275,7 @@ function Field({
   textarea,
   required,
   hint,
+  hintClassName = '',
   inputRef,
 }: FieldProps) {
   const base =
@@ -284,7 +287,11 @@ function Field({
           {label}
           {required && <span className="text-ink/30"> *</span>}
         </span>
-        {hint && <span className="text-[10px] text-ink/40">{hint}</span>}
+        {hint && (
+          <span className={`text-[10px] text-ink/40 ${hintClassName}`}>
+            {hint}
+          </span>
+        )}
       </div>
       {textarea ? (
         <textarea

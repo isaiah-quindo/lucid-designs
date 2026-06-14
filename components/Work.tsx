@@ -118,18 +118,20 @@ export default function Work() {
                 </span>
 
                 <div className="col-span-12 md:col-span-5 order-2 md:order-none">
-                  <div className="relative aspect-[1552/982] overflow-hidden rounded-sm p-6 md:p-8">
+                  <div className="relative overflow-hidden rounded-sm p-6 md:p-8">
                     <div
                       className={`absolute inset-0 bg-gradient-to-br ${p.preview.gradient}`}
                     />
-                    {p.preview.image && (
-                      <img
-                        src={p.preview.image}
-                        alt={`${p.title} preview`}
-                        loading="lazy"
-                        className="relative h-full w-full object-contain object-center transition-all duration-700 ease-out grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
-                      />
-                    )}
+                    <div className="relative aspect-[1552/982]">
+                      {p.preview.image && (
+                        <img
+                          src={p.preview.image}
+                          alt={`${p.title} preview`}
+                          loading="lazy"
+                          className="absolute inset-0 h-full w-full object-contain object-center transition-all duration-700 ease-out grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
+                        />
+                      )}
+                    </div>
                     <div className="absolute inset-0 flex items-end justify-between p-4 text-paper transition-opacity duration-500 opacity-60 group-hover:opacity-100">
                       <span className="text-[10px] uppercase tracking-[0.25em]">
                         {p.preview.tag} · Preview
