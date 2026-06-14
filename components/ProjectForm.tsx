@@ -103,17 +103,135 @@ export default function ProjectForm({ open, plan, onClose }: Props) {
         </button>
 
         <div className="px-8 md:px-12 py-10 md:py-14">
-          {status === 'success' ? (
-            <div className="py-6">
-              <div className="text-xs uppercase tracking-[0.25em] text-ink/55 mb-6">
+          {/* Form view */}
+          <div
+            className={status === 'success' ? 'hidden' : 'block'}
+            aria-hidden={status === 'success'}
+          >
+            <div className="flex items-center gap-3 mb-6 pr-12">
+              <div className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-ink/55">
+                <span className="block w-6 h-px bg-ink/40" />
+                Start a project
+              </div>
+              {plan && (
+                <div className="inline-flex items-center gap-2 text-xs rounded-full border border-ink/15 pl-2 pr-3 py-1">
+                  <span className="block h-1.5 w-1.5 rounded-full bg-ink" />
+                  <span className="uppercase tracking-[0.2em] text-ink/55">
+                    Plan
+                  </span>
+                  <span className="text-ink">{plan}</span>
+                </div>
+              )}
+            </div>
+
+            <h3 className="font-display text-3xl md:text-4xl tracking-tightest leading-[1.05] mb-8">
+              Tell us a bit about what you'd like to build.
+            </h3>
+
+            <form onSubmit={onSubmit} className="grid gap-6 mt-2">
+              <Field label="Your name" name="name" inputRef={nameRef} required />
+              <Field label="Email" name="email" type="email" required />
+              <Field
+                label="Company or project name"
+                name="project"
+                hint="Optional"
+              />
+              <Field
+                label="Tell us about the project"
+                name="brief"
+                textarea
+                required
+                hint="Timelines, goals, links to anything relevant."
+              />
+
+              {error && <p className="text-sm text-red-600">{error}</p>}
+
+              <div className="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-4 mt-2">
+                <span className="text-xs text-ink/50">
+                  We reply within two working days.
+                </span>
+                <button
+                  type="submit"
+                  disabled={status === 'submitting'}
+                  className="inline-flex items-center justify-between gap-3 rounded-full bg-ink text-paper px-6 py-3 text-sm hover:bg-ink/90 transition-colors disabled:opacity-80 disabled:cursor-not-allowed"
+                >
+                  <span className="inline-flex items-center gap-2">
+                    {status === 'submitting' && (
+                      <svg
+                        viewBox="0 0 20 20"
+                        className="h-3.5 w-3.5 animate-spin"
+                        fill="none"
+                      >
+                        <circle
+                          cx="10"
+                          cy="10"
+                          r="8"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          opacity="0.25"
+                        />
+                        <path
+                          d="M18 10 A 8 8 0 0 0 10 2"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          fill="none"
+                        />
+                      </svg>
+                    )}
+                    <span>
+                      {status === 'submitting' ? 'Sending…' : 'Send brief'}
+                    </span>
+                  </span>
+                  <span>→</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          {/* Success view */}
+          {status === 'success' && (
+            <div
+              key="success"
+              className="flex flex-col items-start animate-[check-pop_0.55s_cubic-bezier(0.2,0.8,0.2,1)_forwards]"
+            >
+              <div className="flex items-center gap-3 mb-8 text-xs uppercase tracking-[0.25em] text-ink/55">
+                <span className="block w-6 h-px bg-ink/40" />
                 Sent
               </div>
+
+              <div className="mb-8 success-pop">
+                <svg
+                  viewBox="0 0 100 100"
+                  className="h-16 w-16 text-ink"
+                  fill="none"
+                >
+                  <circle
+                    className="success-circle"
+                    cx="50"
+                    cy="50"
+                    r="46"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <path
+                    className="success-check"
+                    d="M30 52 L46 67 L72 38"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+
               <h3 className="font-display text-3xl md:text-4xl tracking-tightest leading-[1.05] mb-4">
                 Thanks — we'll be in touch.
               </h3>
               <p className="text-ink/65 leading-relaxed max-w-md">
-                We reply within two working days. In the meantime, feel free
-                to email us directly at{' '}
+                We've sent a copy of your brief to your inbox and will reply
+                within two working days. In the meantime, feel free to email us
+                directly at{' '}
                 <a
                   href="mailto:hello@luciddesigns.com.au"
                   className="underline underline-offset-4"
@@ -131,65 +249,6 @@ export default function ProjectForm({ open, plan, onClose }: Props) {
                 <span>→</span>
               </button>
             </div>
-          ) : (
-            <>
-              <div className="flex items-center gap-3 mb-6 pr-12">
-                <div className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-ink/55">
-                  <span className="block w-6 h-px bg-ink/40" />
-                  Start a project
-                </div>
-                {plan && (
-                  <div className="inline-flex items-center gap-2 text-xs rounded-full border border-ink/15 pl-2 pr-3 py-1">
-                    <span className="block h-1.5 w-1.5 rounded-full bg-ink" />
-                    <span className="uppercase tracking-[0.2em] text-ink/55">
-                      Plan
-                    </span>
-                    <span className="text-ink">{plan}</span>
-                  </div>
-                )}
-              </div>
-
-              <h3 className="font-display text-3xl md:text-4xl tracking-tightest leading-[1.05] mb-8">
-                Tell us a bit about what you'd like to build.
-              </h3>
-
-              <form onSubmit={onSubmit} className="grid gap-6 mt-2">
-                <Field label="Your name" name="name" inputRef={nameRef} required />
-                <Field label="Email" name="email" type="email" required />
-                <Field
-                  label="Company or project name"
-                  name="project"
-                  hint="Optional"
-                />
-                <Field
-                  label="Tell us about the project"
-                  name="brief"
-                  textarea
-                  required
-                  hint="Timelines, goals, links to anything relevant."
-                />
-
-                {error && (
-                  <p className="text-sm text-red-600">{error}</p>
-                )}
-
-                <div className="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-4 mt-2">
-                  <span className="text-xs text-ink/50">
-                    We reply within two working days.
-                  </span>
-                  <button
-                    type="submit"
-                    disabled={status === 'submitting'}
-                    className="inline-flex items-center justify-between gap-3 rounded-full bg-ink text-paper px-6 py-3 text-sm hover:bg-ink/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-                  >
-                    <span>
-                      {status === 'submitting' ? 'Sending…' : 'Send brief'}
-                    </span>
-                    <span>→</span>
-                  </button>
-                </div>
-              </form>
-            </>
           )}
         </div>
       </div>

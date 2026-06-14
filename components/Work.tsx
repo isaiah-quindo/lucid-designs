@@ -42,6 +42,18 @@ const projects = [
       tag: 'NM',
     },
   },
+  {
+    title: 'RiCON',
+    type: 'Web Design · Event Registration',
+    year: '2026',
+    sector: 'Events',
+    href: 'https://ricon.ph',
+    preview: {
+      image: '/work/ricon.png',
+      gradient: 'from-[#eedaba] via-[#c69060] to-[#4f2f1c]',
+      tag: 'RC',
+    },
+  },
 ]
 
 export default function Work() {
