@@ -54,11 +54,20 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     locale: 'en_AU',
     type: 'website',
+    images: [
+      {
+        url: '/og.png',
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} — Design & Development Studio`,
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: TITLE,
     description: DESCRIPTION,
+    images: ['/og.png'],
     creator: '@luciddesigns',
   },
   robots: {
