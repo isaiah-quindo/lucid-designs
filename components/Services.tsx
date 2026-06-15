@@ -15,13 +15,13 @@ const services = [
   {
     n: '02',
     title: 'Web Design',
-    body: 'Considered marketing sites, portfolios and product surfaces — designed to convert and built to last.',
+    body: 'Thoughtful marketing sites, portfolios and product surfaces, designed to convert and built to last.',
     tags: ['UX', 'UI', 'Prototyping', 'Copy'],
   },
   {
     n: '03',
     title: 'Development',
-    body: 'End-to-end web builds — interfaces, APIs, databases and the infrastructure underneath. Fast, accessible, and built to scale with your team.',
+    body: 'End-to-end web builds: interfaces, APIs, databases and the infrastructure underneath. Fast, accessible, and built to scale with your team.',
     tags: ['Next.js', 'Laravel', 'Postgres', 'Infra'],
   },
   {

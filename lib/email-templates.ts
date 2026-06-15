@@ -69,8 +69,8 @@ function detailRow(label: string, value: string) {
 }
 
 export function studioNotificationEmail(p: Payload) {
-  const subject = `New brief — ${p.plan || 'No plan'} · ${p.name}`
-  const preheader = `${p.plan ? p.plan + ' — ' : ''}${p.name} just sent a brief from luciddesigns.com.au`
+  const subject = `New brief: ${p.plan || 'No plan'} · ${p.name}`
+  const preheader = `${p.plan ? p.plan + ' · ' : ''}${p.name} just sent a brief from luciddesigns.com.au`
   const firstName = p.name.split(/\s+/)[0]
 
   const body = `
@@ -116,7 +116,7 @@ export function studioNotificationEmail(p: Payload) {
   const text = [
     'New project brief',
     '',
-    `Plan: ${p.plan || '—'}`,
+    `Plan: ${p.plan || 'No plan'}`,
     `Name: ${p.name}`,
     `Email: ${p.email}`,
     p.project ? `Company: ${p.project}` : null,
@@ -124,7 +124,7 @@ export function studioNotificationEmail(p: Payload) {
     'Brief:',
     p.brief,
     '',
-    '—',
+    '---',
     `Reply directly to this email to respond to ${firstName}.`,
   ]
     .filter((l): l is string => l !== null)
@@ -135,7 +135,7 @@ export function studioNotificationEmail(p: Payload) {
 
 export function userConfirmationEmail(p: Payload) {
   const firstName = p.name.split(/\s+/)[0]
-  const subject = `We've received your brief — Lucid Designs`
+  const subject = `We've received your brief · Lucid Designs`
   const preheader = `Thanks, ${firstName}. We'll be in touch within two working days.`
 
   const body = `
@@ -151,7 +151,7 @@ export function userConfirmationEmail(p: Payload) {
       <p style="margin:0; font-size:16px; line-height:1.65; color:rgba(10,10,10,0.78);">
         We've received your brief and will get back to you within
         <strong style="color:${INK}; font-weight:600;">two working days</strong>.
-        If anything comes to mind in the meantime, just reply to this email — it
+        If anything comes to mind in the meantime, just reply to this email, it
         comes straight to us.
       </p>
     </td></tr>
@@ -179,7 +179,7 @@ export function userConfirmationEmail(p: Payload) {
 
     <tr><td style="padding:40px 40px 40px 40px;">
       <div style="border-top:1px solid ${LINE}; padding-top:24px; font-size:14px; line-height:1.6; color:rgba(10,10,10,0.75);">
-        — The Lucid Designs studio<br />
+        The Lucid Designs studio<br />
         <a href="mailto:hello@luciddesigns.com.au" style="color:${MUTE}; text-decoration:none;">hello@luciddesigns.com.au</a>
       </div>
     </td></tr>
@@ -192,7 +192,7 @@ export function userConfirmationEmail(p: Payload) {
     '',
     `If anything comes to mind in the meantime, just reply to this email.`,
     '',
-    '— What you sent —',
+    'What you sent',
     p.plan ? `Plan: ${p.plan}` : null,
     `Name: ${p.name}`,
     `Email: ${p.email}`,
@@ -201,7 +201,7 @@ export function userConfirmationEmail(p: Payload) {
     'Brief:',
     p.brief,
     '',
-    '— The Lucid Designs studio',
+    'The Lucid Designs studio',
     'hello@luciddesigns.com.au',
     'luciddesigns.com.au',
   ]

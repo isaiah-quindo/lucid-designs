@@ -227,7 +227,7 @@ export default function ProjectForm({ open, plan, onClose }: Props) {
               </div>
 
               <h3 className="font-display text-3xl md:text-4xl tracking-tightest leading-[1.05] mb-4">
-                Thanks — we'll be in touch.
+                Thanks, we'll be in touch.
               </h3>
               <p className="text-ink/65 leading-relaxed max-w-md">
                 We've sent a copy of your brief to your inbox and will reply

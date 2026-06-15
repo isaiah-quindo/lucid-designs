@@ -72,7 +72,7 @@ export default function Contact() {
             </div>
             <div className="flex justify-between border-b border-ink/15 pb-2">
               <span className="text-ink/50">Hours</span>
-              <span>Mon — Fri, 9 to 5</span>
+              <span>Mon to Fri, 9 to 5</span>
             </div>
           </div>
         </div>

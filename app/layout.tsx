@@ -17,15 +17,15 @@ const display = Inter_Tight({
 
 const SITE_URL = 'https://luciddesigns.com.au'
 const SITE_NAME = 'Lucid Designs'
-const TITLE = 'Lucid Designs — Design & Development Studio'
+const TITLE = 'Lucid Designs · Design & Development Studio'
 const DESCRIPTION =
-  'Lucid Designs is a Sydney-based studio crafting brand identity, web design, and development for ambitious brands. Considered work, end to end.'
+  'Lucid Designs is a Sydney-based studio crafting brand identity, web design, and development for ambitious brands. Thoughtful work, end to end.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: TITLE,
-    template: '%s — Lucid Designs',
+    template: '%s · Lucid Designs',
   },
   description: DESCRIPTION,
   applicationName: SITE_NAME,
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
         url: '/og.png',
         width: 1200,
         height: 630,
-        alt: `${SITE_NAME} — Design & Development Studio`,
+        alt: `${SITE_NAME} · Design & Development Studio`,
       },
     ],
   },

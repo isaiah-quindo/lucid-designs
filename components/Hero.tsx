@@ -66,20 +66,20 @@ export default function Hero() {
         </div>
 
         <h1 className="font-display text-[clamp(3rem,11vw,11rem)] leading-[0.95] tracking-tightest [text-shadow:0_2px_40px_rgba(0,0,0,0.6),0_1px_4px_rgba(0,0,0,0.4)]">
-          <span className="block overflow-hidden">
-            <span className="hero-line block">Clarity in</span>
+          <span className="block overflow-hidden pb-[0.2em] -mb-[0.2em]">
+            <span className="hero-line block">We build</span>
           </span>
-          <span className="block overflow-hidden">
-            <span className="hero-line block italic">every pixel,</span>
+          <span className="block overflow-hidden pb-[0.2em] -mb-[0.2em]">
+            <span className="hero-line block">for people</span>
           </span>
-          <span className="block overflow-hidden">
-            <span className="hero-line block">every line of code.</span>
+          <span className="block overflow-hidden pb-[0.2em] -mb-[0.2em]">
+            <span className="hero-line block">with <span className="italic">big plans.</span></span>
           </span>
         </h1>
 
         <div className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
           <p className="hero-fade md:col-span-5 text-lg md:text-xl text-paper/70 leading-relaxed max-w-xl [text-shadow:0_0_3px_rgba(0,0,0,1),0_1px_6px_rgba(0,0,0,1),0_2px_36px_rgba(0,0,0,0.95)]">
-            We are a small, hands-on studio building considered websites,
+            We are a small, hands-on studio carefully building websites,
             interfaces, and brand systems for companies who care about how
             things work and how they feel.
           </p>
@@ -91,7 +91,7 @@ export default function Hero() {
             </div>
             <div className="hero-meta flex justify-between border-b border-paper/20 pb-2">
               <span className="text-paper/50">Available</span>
-              <span>Q3 — Q4 2026</span>
+              <span>Q3 to Q4 2026</span>
             </div>
             <div className="hero-meta flex justify-between border-b border-paper/20 pb-2">
               <span className="text-paper/50">Working with</span>

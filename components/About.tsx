@@ -14,12 +14,12 @@ const principles = [
   {
     n: '02',
     t: 'Craft at every layer',
-    d: 'From typographic detail to the underlying code, we treat every layer of the work as visible — because eventually, it is.',
+    d: 'From typographic detail to the underlying code, we treat every layer of the work as visible, because eventually, it is.',
   },
   {
     n: '03',
-    t: 'A small senior team',
-    d: 'No handoffs to junior teams. The people you brief are the people doing the work.',
+    t: 'One team, start to finish',
+    d: 'The same people guide your project from first brief to launch. Nothing gets lost in a handover.',
   },
   {
     n: '04',

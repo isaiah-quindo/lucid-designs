@@ -13,7 +13,7 @@ export default function Footer() {
               <span className="text-sm font-medium">Lucid Designs</span>
             </div>
             <p className="text-paper/60 max-w-sm text-sm leading-relaxed">
-              A design and development studio crafting clear, considered
+              A design and development studio crafting clear, thoughtful
               digital experiences for ambitious brands.
             </p>
           </div>
@@ -74,7 +74,7 @@ export default function Footer() {
               Hours
             </h4>
             <ul className="space-y-2">
-              <li className="text-paper/80">Mon — Fri</li>
+              <li className="text-paper/80">Mon to Fri</li>
               <li className="text-paper/60">9 to 5</li>
             </ul>
           </div>
