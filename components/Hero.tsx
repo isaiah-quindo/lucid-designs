@@ -16,7 +16,7 @@ export default function Hero() {
         delay: 0.6,
       })
 
-      gsap.set('.hero-line', { y: '110%' })
+      gsap.set('.hero-line', { y: '130%' })
       gsap.set('.hero-fade', { opacity: 0, y: 24 })
 
       tl.to('.hero-line', {

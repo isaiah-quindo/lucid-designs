@@ -50,11 +50,105 @@ const projects = [
     href: 'https://ricon.ph',
     preview: {
       image: '/work/ricon.png',
+      video: '/work/ricon.mp4',
       gradient: 'from-[#eedaba] via-[#c69060] to-[#4f2f1c]',
       tag: 'RC',
     },
   },
 ]
+
+type Project = (typeof projects)[number]
+
+function ProjectRow({ p, index }: { p: Project; index: number }) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const video = 'video' in p.preview ? (p.preview as { video?: string }).video : undefined
+
+  const handleEnter = () => {
+    const v = videoRef.current
+    if (!v) return
+    v.currentTime = 0
+    void v.play().catch(() => {})
+  }
+
+  const handleLeave = () => {
+    const v = videoRef.current
+    if (!v) return
+    v.pause()
+    v.currentTime = 0
+  }
+
+  return (
+    <li
+      className="work-row group border-b border-paper/15"
+      data-hover
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+    >
+      <a
+        href={p.href}
+        target={p.href.startsWith('http') ? '_blank' : undefined}
+        rel={p.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+        className="grid grid-cols-12 gap-6 py-7 md:py-10 items-center"
+      >
+        <span className="col-span-1 text-xs text-paper/40 self-start pt-2">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+
+        <div className="col-span-12 md:col-span-5 order-2 md:order-none">
+          <div className="relative overflow-hidden rounded-sm p-6 md:p-8">
+            <div
+              className={`absolute inset-0 bg-gradient-to-br ${p.preview.gradient}`}
+            />
+            <div className="relative aspect-[1552/982]">
+              {p.preview.image && (
+                <img
+                  src={p.preview.image}
+                  alt={`${p.title} preview`}
+                  loading="lazy"
+                  className={`absolute inset-0 h-full w-full object-contain object-center transition-all duration-700 ease-out grayscale brightness-75 ${
+                    video
+                      ? 'group-hover:opacity-0'
+                      : 'group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105'
+                  }`}
+                />
+              )}
+              {video && (
+                <video
+                  ref={videoRef}
+                  src={video}
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  className="absolute inset-0 h-full w-full object-contain object-center opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
+                />
+              )}
+            </div>
+            <div className="absolute inset-0 flex items-end justify-between p-4 text-paper transition-opacity duration-500 opacity-60 group-hover:opacity-100">
+              <span className="text-[10px] uppercase tracking-[0.25em]">
+                {p.preview.tag} · Preview
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.25em]">
+                {p.sector}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-span-11 md:col-span-5 order-1 md:order-none">
+          <h3 className="font-display text-3xl md:text-5xl tracking-tightest leading-none transition-transform duration-500 group-hover:translate-x-2">
+            {p.title}
+          </h3>
+          <div className="mt-4 text-sm text-paper/60">{p.type}</div>
+        </div>
+
+        <span className="col-span-1 text-right text-sm text-paper/60 order-3 md:order-none self-start pt-2">
+          {p.year}
+        </span>
+      </a>
+    </li>
+  )
+}
 
 export default function Work() {
   const root = useRef<HTMLElement>(null)
@@ -102,59 +196,7 @@ export default function Work() {
 
         <ul className="border-t border-paper/15">
           {projects.map((p, i) => (
-            <li
-              key={p.title}
-              className="work-row group border-b border-paper/15"
-              data-hover
-            >
-              <a
-                href={p.href}
-                target={p.href.startsWith('http') ? '_blank' : undefined}
-                rel={p.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="grid grid-cols-12 gap-6 py-7 md:py-10 items-center"
-              >
-                <span className="col-span-1 text-xs text-paper/40 self-start pt-2">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-
-                <div className="col-span-12 md:col-span-5 order-2 md:order-none">
-                  <div className="relative overflow-hidden rounded-sm p-6 md:p-8">
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${p.preview.gradient}`}
-                    />
-                    <div className="relative aspect-[1552/982]">
-                      {p.preview.image && (
-                        <img
-                          src={p.preview.image}
-                          alt={`${p.title} preview`}
-                          loading="lazy"
-                          className="absolute inset-0 h-full w-full object-contain object-center transition-all duration-700 ease-out grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
-                        />
-                      )}
-                    </div>
-                    <div className="absolute inset-0 flex items-end justify-between p-4 text-paper transition-opacity duration-500 opacity-60 group-hover:opacity-100">
-                      <span className="text-[10px] uppercase tracking-[0.25em]">
-                        {p.preview.tag} · Preview
-                      </span>
-                      <span className="text-[10px] uppercase tracking-[0.25em]">
-                        {p.sector}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-span-11 md:col-span-5 order-1 md:order-none">
-                  <h3 className="font-display text-3xl md:text-5xl tracking-tightest leading-none transition-transform duration-500 group-hover:translate-x-2">
-                    {p.title}
-                  </h3>
-                  <div className="mt-4 text-sm text-paper/60">{p.type}</div>
-                </div>
-
-                <span className="col-span-1 text-right text-sm text-paper/60 order-3 md:order-none self-start pt-2">
-                  {p.year}
-                </span>
-              </a>
-            </li>
+            <ProjectRow key={p.title} p={p} index={i} />
           ))}
         </ul>
 
